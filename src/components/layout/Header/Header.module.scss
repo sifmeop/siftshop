@@ -11,6 +11,11 @@
   @apply flex-1 items-stretch gap-8 transition-all duration-300;
 }
 
+.overlay {
+  @apply absolute inset-0 h-screen w-screen bg-black/70;
+  z-index: 0;
+}
+
 @media (max-width: 1024px) {
   .container {
     justify-content: space-between;

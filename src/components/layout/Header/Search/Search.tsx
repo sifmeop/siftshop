@@ -3,13 +3,18 @@ import { useRouter } from 'next/navigation'
 import { useRef } from 'react'
 import styles from './Search.module.scss'
 
-const Search = () => {
+interface Props {
+  onCloseNav: () => void
+}
+
+const Search = ({ onCloseNav }: Props) => {
   const router = useRouter()
 
   const valueRef = useRef<HTMLInputElement>(null)
 
   const handleSearch = () => {
     if (!valueRef.current?.value) return
+    onCloseNav()
     router.push(`/search?value=${valueRef.current.value}`)
     valueRef.current.value = ''
   }

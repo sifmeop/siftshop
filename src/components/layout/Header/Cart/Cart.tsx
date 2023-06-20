@@ -19,7 +19,11 @@ import {
 import Link from 'next/link'
 import { MdOutlineShoppingCart } from 'react-icons/md'
 
-const Cart = () => {
+interface Props {
+  onCloseNav: () => void
+}
+
+const Cart = ({ onCloseNav }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { cart, total } = useCartStore((state) => state)
 
@@ -64,7 +68,13 @@ const Cart = () => {
                   <Text fontSize='2xl' fontWeight='semibold'>
                     {currencyFormat(total)}
                   </Text>
-                  <Button colorScheme='green' variant='link' onClick={onClose}>
+                  <Button
+                    colorScheme='green'
+                    variant='link'
+                    onClick={() => {
+                      onClose()
+                      onCloseNav()
+                    }}>
                     <Link href='/checkout'>To order</Link>
                   </Button>
                 </Stack>

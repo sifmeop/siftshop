@@ -16,7 +16,11 @@ import Link from 'next/link'
 import { AiOutlineDelete } from 'react-icons/ai'
 import { RiScalesLine } from 'react-icons/ri'
 
-const Comparing = () => {
+interface Props {
+  onCloseNav: () => void
+}
+
+const Comparing = ({ onCloseNav }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { categories, removeCategory } = useComparingStore((state) => state)
 
@@ -43,7 +47,10 @@ const Comparing = () => {
                   <Link
                     href={`/comparing?category=${item.category}`}
                     className='hover:text-primary hover:underline'
-                    onClick={onClose}>
+                    onClick={() => {
+                      onClose()
+                      onCloseNav()
+                    }}>
                     {(item.category[0] as string).toUpperCase() +
                       item.category.slice(1)}{' '}
                     {item.products.length}

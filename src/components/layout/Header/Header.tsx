@@ -1,5 +1,5 @@
 import BurgerMenu from '@/ui/BurgerMenu/BurgerMenu'
-import { Flex, HStack, useDisclosure } from '@chakra-ui/react'
+import { Box, Flex, HStack, useDisclosure } from '@chakra-ui/react'
 import clsx from 'clsx'
 import { useEffect, useRef } from 'react'
 import { useWindowSize } from 'usehooks-ts'
@@ -17,7 +17,7 @@ interface Props {
 }
 
 const Header = ({ mainRef }: Props) => {
-  const { isOpen, onToggle } = useDisclosure()
+  const { isOpen, onClose: onCloseNav, onToggle } = useDisclosure()
   const { width } = useWindowSize()
 
   const headerRef = useRef<HTMLHeadElement>(null)
@@ -35,18 +35,19 @@ const Header = ({ mainRef }: Props) => {
     <header ref={headerRef} className={styles.header}>
       <Flex className={styles.container}>
         <Logo />
+        {isOpen && <Box className={styles.overlay} onClick={onCloseNav} />}
         <Flex
           ref={navigationRef}
           className={clsx(styles.navigation, {
             [styles.navigationMobile]: isOpen
           })}>
-          <Catalog />
-          <Search />
+          <Catalog onCloseNav={onCloseNav} />
+          <Search onCloseNav={onCloseNav} />
           <HStack gap={2.5}>
-            <Comparing />
-            <User />
-            <Wishlist />
-            <Cart />
+            <Comparing onCloseNav={onCloseNav} />
+            <User onCloseNav={onCloseNav} />
+            <Wishlist onCloseNav={onCloseNav} />
+            <Cart onCloseNav={onCloseNav} />
           </HStack>
         </Flex>
         <BurgerMenu isOpen={isOpen} onToggle={onToggle} />

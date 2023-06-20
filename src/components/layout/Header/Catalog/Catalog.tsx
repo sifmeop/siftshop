@@ -12,7 +12,11 @@ import { Fragment } from 'react'
 import { MdClose, MdOutlineDashboard } from 'react-icons/md'
 import { catalogs } from './catalogs'
 
-const Catalog = () => {
+interface Props {
+  onCloseNav: () => void
+}
+
+const Catalog = ({ onCloseNav }: Props) => {
   return (
     <Menu>
       {({ isOpen }) => (
@@ -34,7 +38,7 @@ const Catalog = () => {
             }>
             Catalog
           </MenuButton>
-          <MenuList>
+          <MenuList onClick={onCloseNav}>
             <MenuItem as={Link} href='/catalog' fontWeight='semibold'>
               All products
             </MenuItem>

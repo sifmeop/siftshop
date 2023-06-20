@@ -36,7 +36,11 @@ const checkStatus = (status: string) => {
   }
 }
 
-const User = () => {
+interface Props {
+  onCloseNav: () => void
+}
+
+const User = ({ onCloseNav }: Props) => {
   const { status } = useSession()
   const { onOpen, onClose, isOpen } = useDisclosure()
 
@@ -52,16 +56,16 @@ const User = () => {
         <PopoverBody>
           {status === 'authenticated' ? (
             <Flex direction='column' gap={2}>
-              <Button as={Link} href='/profile' onClick={onClose}>
+              <Button
+                as={Link}
+                href='/profile'
+                onClick={() => {
+                  onClose()
+                  onCloseNav()
+                }}>
                 Profile
               </Button>
-              <Button
-                onClick={() => {
-                  void signOut()
-                  onClose()
-                }}>
-                Sign out
-              </Button>
+              <Button onClick={() => void signOut()}>Sign out</Button>
             </Flex>
           ) : (
             <Button w='full' onClick={() => void signIn('google')}>
