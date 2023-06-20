@@ -1,0 +1,7 @@
+.box {
+  @apply mb-4 flex-wrap justify-between gap-2 rounded-lg border border-[#e9e9e9] p-4;
+
+  & > p {
+    @apply text-xl font-medium;
+  }
+}

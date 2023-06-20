@@ -1,0 +1,11 @@
+.box {
+  @apply mb-2 gap-4;
+}
+
+.rating {
+  @apply cursor-pointer text-[#d2d2d2] transition-all duration-300 hover:scale-110;
+}
+
+.rated {
+  color: #ffa900;
+}

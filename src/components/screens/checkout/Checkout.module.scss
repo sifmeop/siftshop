@@ -1,0 +1,23 @@
+.wrapper {
+  @apply justify-between gap-3;
+
+  &:first-child() {
+    width: 60%;
+  }
+
+  &:last-child() {
+    width: 40%;
+  }
+
+  @media (max-width: 768px) {
+    @apply flex-col gap-6;
+
+    &:first-child() {
+      width: 100%;
+    }
+
+    &:last-child() {
+      width: 100%;
+    }
+  }
+}

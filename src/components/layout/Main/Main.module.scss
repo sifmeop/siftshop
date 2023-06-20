@@ -1,0 +1,9 @@
+.main {
+  @apply mx-auto w-full max-w-[100rem] overflow-auto px-5 py-10;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+}

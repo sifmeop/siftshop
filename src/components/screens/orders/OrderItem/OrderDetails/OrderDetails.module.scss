@@ -1,0 +1,19 @@
+.summary {
+  @apply flex w-[35%] flex-col gap-3;
+}
+
+.goods {
+  @apply w-[65%] flex-1;
+}
+
+.details {
+  @apply flex flex-wrap gap-4;
+
+  & > a {
+    flex: 2;
+  }
+
+  & > div {
+    flex: 1;
+  }
+}

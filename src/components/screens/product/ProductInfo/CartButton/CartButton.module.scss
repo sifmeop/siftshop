@@ -1,0 +1,20 @@
+.buttons {
+  @apply flex w-full max-w-[12.5rem] text-3xl text-white transition-colors;
+
+  & > button {
+    @apply h-[3.125rem] w-full bg-primary text-white hover:bg-primary-dark active:bg-primary-darker;
+    flex: 1;
+  }
+
+  & > button:first-child {
+    @apply rounded-l-lg;
+  }
+
+  & > button:last-child {
+    @apply rounded-r-lg;
+  }
+}
+
+.btnBuy {
+  @apply flex h-[3.125rem] items-center gap-2 rounded-lg bg-primary pl-3 pr-4 text-lg font-semibold text-white transition-colors hover:bg-primary-dark active:bg-primary-darker;
+}

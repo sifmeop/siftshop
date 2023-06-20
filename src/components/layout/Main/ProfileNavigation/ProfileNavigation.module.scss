@@ -1,0 +1,35 @@
+.aside {
+  @apply mt-[6.25rem] w-full max-w-[18.75rem] border-r border-r-[#e2e8f0]/60 bg-white px-4 py-2;
+
+  @media (max-width: 768px) {
+    @apply max-w-full;
+  }
+}
+
+.list {
+  @apply flex flex-col gap-3;
+}
+
+.link {
+  @apply flex items-center gap-3 rounded-lg px-4 py-2 transition-colors;
+
+  &:hover {
+    @apply bg-primary text-white;
+
+    & .icon {
+      background-color: transparent;
+    }
+  }
+}
+
+.icon {
+  @apply rounded-full bg-[#f3f3f3] p-2;
+}
+
+.activeLink {
+  @apply bg-primary text-white;
+
+  & .icon {
+    background-color: transparent;
+  }
+}

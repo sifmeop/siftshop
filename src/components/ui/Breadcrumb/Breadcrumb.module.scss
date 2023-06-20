@@ -1,0 +1,23 @@
+.list {
+  @apply flex items-center;
+}
+
+.item {
+  @apply flex items-center text-[#00000073];
+
+  &:last-child {
+    color: rgba(0, 0, 0, 0.88);
+  }
+
+  &Link {
+    @apply flex items-center gap-0.5 rounded-[4px] px-1;
+
+    &:hover {
+      @apply bg-[#0000000f] text-[#000000e0] transition-colors;
+    }
+  }
+
+  &Slash {
+    @apply mx-1 text-[#00000073];
+  }
+}

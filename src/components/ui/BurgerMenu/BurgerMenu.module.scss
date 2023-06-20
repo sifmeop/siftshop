@@ -1,0 +1,33 @@
+.menuIcon {
+  @apply hidden h-[21px] w-[30px] flex-col items-end gap-[6px];
+
+  span,
+  &::before,
+  &::after {
+    content: '';
+    @apply block h-[3px] w-full rounded-lg bg-white transition-all duration-300;
+  }
+}
+
+.box {
+  @apply hidden rounded-lg bg-black/70 p-3;
+}
+
+.menuActive {
+  span {
+    width: 65%;
+  }
+
+  &::after {
+    width: 35%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .menuIcon {
+    display: flex;
+  }
+  .box {
+    display: inline-block;
+  }
+}

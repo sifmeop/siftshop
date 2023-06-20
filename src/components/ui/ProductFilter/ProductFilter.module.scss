@@ -1,0 +1,30 @@
+.wrapper {
+  @apply grid gap-8;
+  grid-template-columns: max-content 1fr;
+}
+
+.inner {
+  position: fixed;
+  width: 18.75rem;
+}
+
+.filter {
+  @apply mb-4 flex flex-col gap-2 rounded-lg bg-white p-6 shadow-lg;
+}
+
+.subTitle {
+  @apply mb-1 text-base font-semibold text-[#7E868C];
+}
+
+.button {
+  @apply block w-full rounded-lg bg-primary p-2 text-center text-lg font-semibold text-white shadow-lg transition-colors hover:bg-primary-dark active:bg-primary-darker;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+  .inner {
+    position: relative;
+  }
+}

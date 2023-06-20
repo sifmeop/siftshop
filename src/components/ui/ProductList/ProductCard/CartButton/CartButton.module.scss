@@ -1,0 +1,20 @@
+.optionalChoice {
+  @apply flex transition-colors;
+
+  & > button {
+    @apply w-full bg-primary text-white hover:bg-primary-dark active:bg-primary-darker;
+    flex: 1;
+  }
+
+  & > button:first-child {
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  &List {
+    @apply flex-col;
+
+    & > button:first-child {
+      @apply rounded-bl-none rounded-tr-lg;
+    }
+  }
+}

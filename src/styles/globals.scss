@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#__next {
+  @apply h-full scroll-smooth;
+}
+
+body {
+  @apply overflow-x-hidden bg-[#F9F9F9] text-[#221f1f];
+}
+
+.page__subtitle {
+  @apply mb-4 text-xl font-medium;
+}
+
+.header__icon-button {
+  @apply relative grid h-[3.125rem] w-[3.125rem] cursor-pointer place-items-center rounded-lg text-white transition-colors hover:bg-white/30 active:bg-white/50;
+}
+
+.checkout__box {
+  @apply w-full rounded-lg border border-[#e2e8f0] p-4 transition-colors hover:border-[#cfd9e3];
+}
+
+.product__count {
+  @apply grid place-items-center bg-primary px-2;
+}
+
+.icon__count {
+  @apply absolute -right-1 -top-1 rounded-full bg-red-500 px-2.5 py-1 text-white;
+}
+
+.product__submenu-icon {
+  @apply h-fit rounded-lg bg-black/10 p-1.5 text-primary transition-colors hover:bg-black/20;
+}
+
+.comparing__message {
+  @apply mb-4 rounded-lg border border-orange-300 bg-orange-100 p-4;
+}

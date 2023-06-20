@@ -1,0 +1,15 @@
+.input {
+  @apply w-full rounded-lg border bg-white px-4 py-2 outline-offset-2 transition-all duration-300 focus:outline-none;
+  outline: transparent solid 2px;
+  z-index: 1;
+
+  &:hover {
+    box-shadow: rgb(203 213 224) 0px 0px 0px 2px;
+    border-color: rgb(203 213 224);
+  }
+
+  &:focus {
+    box-shadow: #6a983c 0px 0px 0px 2px;
+    border-color: #6a983c;
+  }
+}

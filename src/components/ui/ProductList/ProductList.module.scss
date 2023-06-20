@@ -1,0 +1,16 @@
+.products {
+  @apply grid gap-8;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.top {
+  @apply mb-4 flex flex-wrap items-end justify-between gap-2;
+}
+
+.filters {
+  @apply flex justify-end gap-4;
+}
+
+.productsList {
+  grid-template-columns: 1fr;
+}

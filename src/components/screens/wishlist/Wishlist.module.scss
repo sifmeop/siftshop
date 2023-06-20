@@ -1,0 +1,30 @@
+.wishlist {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+
+  & > div {
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    margin-right: -1px;
+    margin-bottom: -1px;
+
+    & img {
+      mix-blend-mode: multiply;
+    }
+  }
+}
+
+.product {
+  @apply bg-white p-3 transition-transform;
+
+  &:hover {
+    transform: scale(103%);
+  }
+}
+
+.image {
+  @apply mx-auto mb-2 max-h-[12.5rem] object-contain;
+}
+
+.price {
+  @apply text-lg font-medium;
+}

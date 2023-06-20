@@ -1,0 +1,34 @@
+.wrapper {
+  @apply flex flex-col gap-3;
+  & img {
+    mix-blend-mode: multiply;
+  }
+}
+
+.currentImage {
+  @apply h-[39.375rem] w-[42rem] rounded-lg border-2 border-primary px-12 py-2;
+
+  & img {
+    @apply mx-auto h-full w-full object-contain;
+  }
+}
+
+.images {
+  @apply flex gap-3;
+
+  & img {
+    @apply h-full w-full rounded-lg object-contain;
+  }
+}
+
+.button {
+  @apply h-[6.25rem] w-[6.25rem] rounded-lg border-2 border-transparent p-2 transition-colors;
+
+  &:hover {
+    @apply border-[#46760A];
+  }
+}
+
+.activeImage {
+  @apply border-primary;
+}

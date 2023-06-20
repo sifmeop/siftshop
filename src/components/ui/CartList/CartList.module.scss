@@ -1,0 +1,23 @@
+.list {
+  margin-bottom: 3.5rem;
+}
+
+.top {
+  @apply flex justify-between gap-2;
+}
+
+.title {
+  @apply h-fit hover:underline;
+}
+
+.content {
+  @apply flex gap-4 text-lg font-medium;
+}
+
+.image {
+  @apply h-[6.25rem] w-[6.25rem] object-contain;
+}
+
+.counter {
+  @apply flex items-center justify-end gap-6 text-lg font-medium;
+}

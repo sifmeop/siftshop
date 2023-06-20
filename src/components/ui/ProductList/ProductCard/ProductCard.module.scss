@@ -1,0 +1,69 @@
+.product {
+  @apply flex transform justify-between rounded-lg font-semibold text-[#2c2c2c] shadow-lg transition-all duration-300 ease-in-out;
+
+  &:hover {
+    @apply scale-[102%] shadow-xl;
+  }
+}
+
+.imageWrapper {
+  @apply block rounded-t-lg bg-white p-[1.875rem];
+
+  & > img {
+    @apply mx-auto block w-auto object-contain;
+  }
+
+  &List {
+    @apply w-full max-w-[12.5rem] rounded-l-lg rounded-tr-none;
+  }
+}
+
+.info {
+  flex: 1;
+  padding: 1rem 1.5rem;
+}
+
+.infoTop {
+  @apply mb-2 flex items-center gap-2 text-lg;
+}
+
+.name {
+  @apply hover:underline;
+}
+
+.rating {
+  @apply flex items-center gap-1 rounded-lg bg-primary px-2 py-1 text-white;
+}
+
+.buttons {
+  @apply grid text-white;
+
+  & > button {
+    @apply grid place-items-center px-1 py-3 transition-colors;
+    flex: 1;
+  }
+
+  & > button:first-child {
+    @apply rounded-bl-lg bg-primary text-white hover:bg-primary-dark active:bg-primary-darker;
+  }
+
+  & > button:last-child {
+    @apply rounded-br-lg bg-[#EDEDED] text-black hover:bg-[#E0E0E0] active:bg-[#D0D0D0];
+  }
+
+  &List {
+    flex-direction: column;
+
+    & > button {
+      @apply flex-col px-4;
+
+      &:first-child {
+        @apply rounded-l-none rounded-tr-lg;
+      }
+
+      &:last-child {
+        @apply rounded-l-none rounded-br-lg;
+      }
+    }
+  }
+}

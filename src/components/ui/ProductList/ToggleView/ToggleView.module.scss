@@ -1,0 +1,21 @@
+.viewButtons {
+  @apply flex rounded-lg;
+}
+
+.button {
+  @apply bg-white p-3 text-primary;
+
+  &:first-child {
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  &:last-child {
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+}
+
+.active {
+  @apply bg-primary text-white;
+}
