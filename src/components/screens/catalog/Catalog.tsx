@@ -1,5 +1,5 @@
 import { fetchProducts } from '@/service/fetchProducts'
-import { Product, ProductDetail } from '@/types/product.interface'
+import { type Product, type ProductDetail } from '@/types/product.interface'
 import ProductFilter from '@/ui/ProductFilter/ProductFilter'
 import ProductList from '@/ui/ProductList/ProductList'
 import { useQuery } from '@tanstack/react-query'
@@ -19,7 +19,7 @@ const Catalog = () => {
     setFilterProducts(products)
   }, [products])
 
-  if (!products) return null
+  if (!products?.length) return null
 
   return (
     <ProductFilter products={products} setFilterProducts={setFilterProducts}>

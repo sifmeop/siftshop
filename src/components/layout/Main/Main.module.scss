@@ -1,9 +1,16 @@
 .main {
-  @apply mx-auto w-full max-w-[100rem] overflow-auto px-5 py-10;
+  @apply mx-auto mt-[5.625rem] w-full max-w-[100rem] p-5;
+
+  @media (max-width: 1024px) {
+    margin-top: 5.1594rem;
+  }
 }
 
 @media (max-width: 768px) {
   .wrapper {
     flex-direction: column;
+  }
+  .mainWithNavigation {
+    margin-top: 0;
   }
 }

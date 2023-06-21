@@ -4,8 +4,8 @@ const HeaderIconLoader = () => {
   return (
     <ContentLoader
       speed={1}
-      width={60}
-      height={60}
+      width={50}
+      height={50}
       viewBox='0 0 60 60'
       backgroundColor='#f3f3f3'
       foregroundColor='#E4E4E4'>

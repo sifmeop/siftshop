@@ -1,5 +1,6 @@
-import { Product, ProductDetail } from '@/types/product.interface'
+import { type Product, type ProductDetail } from '@/types/product.interface'
 import { currencyFormat } from '@/utils/currencyFormat'
+import { Flex, Heading } from '@chakra-ui/react'
 import CartButton from './CartButton/CartButton'
 import ComparingButton from './ComparingButton/ComparingButton'
 import Details from './Details/Details'
@@ -11,18 +12,26 @@ interface Props {
 }
 
 const ProductInfo = ({ info }: Props) => {
-  return info ? (
-    <div className={styles.info}>
-      <h1 className={styles.name}>{info.name}</h1>
-      <div className={styles.priceWrapper}>
-        <p className={styles.price}>{currencyFormat(info.price)}</p>
-        <CartButton product={info} />
-        <ComparingButton product={info} className={styles.btnOther} />
-        <WishlistButton product={info} className={styles.btnOther} />
+  return (
+    info && (
+      <div className={styles.info}>
+        <Heading as='h1' size='xl'>
+          {info.name}
+        </Heading>
+        <Flex flexWrap='wrap' gap={4}>
+          <Heading as='h2' size='lg'>
+            {currencyFormat(info.price)}
+          </Heading>
+          <Flex flexWrap='wrap' gap={4}>
+            <CartButton product={info} />
+            <ComparingButton product={info} className={styles.btnOther} />
+            <WishlistButton product={info} className={styles.btnOther} />
+          </Flex>
+        </Flex>
+        <Details product={info} />
       </div>
-      <Details product={info} />
-    </div>
-  ) : null
+    )
+  )
 }
 
 export default ProductInfo

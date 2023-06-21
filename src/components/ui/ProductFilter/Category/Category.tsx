@@ -1,19 +1,20 @@
-import { FilterState } from '@/types/filter.interface'
-import { ProductWithoutDetails } from '@/types/product.interface'
+import { type FilterState } from '@/types/filter.interface'
+import { type ProductWithoutDetails } from '@/types/product.interface'
 import { replaceCategoryTitle } from '@/utils/replaceCategoryTitle'
 import { Checkbox, CheckboxGroup, Flex } from '@chakra-ui/react'
 import { usePathname } from 'next/navigation'
 
 interface Props {
   products: ProductWithoutDetails[]
-  setFilter: React.MutableRefObject<FilterState>
+  value: string[]
+  setFilter: React.Dispatch<React.SetStateAction<FilterState>>
 }
 
 type Category = {
   [key: string]: number
 }
 
-const Category = ({ products, setFilter }: Props) => {
+const Category = ({ products, value, setFilter }: Props) => {
   const pathname = usePathname()
 
   if (pathname === '/catalog') {
@@ -28,11 +29,12 @@ const Category = ({ products, setFilter }: Props) => {
     return (
       <CheckboxGroup
         colorScheme='green'
+        value={value}
         onChange={(value) =>
-          (setFilter.current = {
-            ...setFilter.current,
+          setFilter((prev) => ({
+            ...prev,
             categories: value as string[]
-          })
+          }))
         }>
         {Object.keys(categories).map((category) => (
           <Flex
@@ -50,7 +52,7 @@ const Category = ({ products, setFilter }: Props) => {
   return (
     <Flex alignItems='center' justifyContent='space-between'>
       <Checkbox defaultChecked isDisabled colorScheme='green'>
-        {replaceCategoryTitle(pathname.split('/')[2])}
+        {replaceCategoryTitle(pathname.split('/')[2] as string)}
       </Checkbox>
       {products.length}
     </Flex>

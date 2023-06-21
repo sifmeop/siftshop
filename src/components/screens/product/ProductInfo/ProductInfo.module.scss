@@ -1,21 +1,13 @@
 .info {
-  @apply flex w-full flex-col gap-5;
+  @apply flex w-[55%] flex-col gap-5;
 
   & > * {
     @apply rounded-lg border-2 border-primary p-3;
   }
-}
 
-.name {
-  @apply text-3xl font-bold;
-}
-
-.priceWrapper {
-  @apply flex items-center gap-4;
-}
-
-.price {
-  @apply text-2xl font-bold;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .btnOther {

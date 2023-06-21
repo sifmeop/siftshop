@@ -18,10 +18,10 @@ const Gallery = ({ name, images }: Props) => {
         <Image
           width={500}
           height={600}
-          src={`${API_URL}/${images[currentImage]}`}
+          src={`${API_URL}/${images[currentImage] as string}`}
           alt='Selected image from gallery'
           placeholder='blur'
-          blurDataURL={`${API_URL}/${images[currentImage]}`}
+          blurDataURL={`${API_URL}/${images[currentImage] as string}`}
           quality={100}
         />
       </div>

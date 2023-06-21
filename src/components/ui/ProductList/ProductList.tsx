@@ -1,6 +1,9 @@
-import { Breadcrumb as TypeBreadcrumb } from '@/types/breadcrumb.interface'
-import { SortFilter as ISortFilter, ViewFilter } from '@/types/filter.interface'
-import { Product, ProductDetail } from '@/types/product.interface'
+import { type Breadcrumb as TypeBreadcrumb } from '@/types/breadcrumb.interface'
+import {
+  type SortFilter as ISortFilter,
+  type ViewFilter
+} from '@/types/filter.interface'
+import { type Product, type ProductDetail } from '@/types/product.interface'
 import clsx from 'clsx'
 import { useMemo, useState } from 'react'
 import Breadcrumb from '../Breadcrumb/Breadcrumb'

@@ -1,6 +1,6 @@
-import { FilterState } from '@/types/filter.interface'
-import { Product, ProductDetail } from '@/types/product.interface'
-import { useRef } from 'react'
+import { type FilterState } from '@/types/filter.interface'
+import { type Product, type ProductDetail } from '@/types/product.interface'
+import { useState } from 'react'
 
 interface Props {
   products: Product<ProductDetail>[]
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const useFilter = ({ products, maxPrice, setFilterProducts }: Props) => {
-  const filterRef = useRef<FilterState>({
+  const [filterState, setFilterState] = useState<FilterState>({
     minPrice: 0,
     maxPrice: maxPrice,
     brands: [],
@@ -20,7 +20,7 @@ export const useFilter = ({ products, maxPrice, setFilterProducts }: Props) => {
   })
 
   const applyFilters = () => {
-    const { minPrice, maxPrice, brands, categories, rating } = filterRef.current
+    const { minPrice, maxPrice, brands, categories, rating } = filterState
 
     window.scrollTo(0, 0)
 
@@ -47,7 +47,8 @@ export const useFilter = ({ products, maxPrice, setFilterProducts }: Props) => {
     if (categories.length) {
       filteredList = filteredList.filter((product) =>
         categories.includes(
-          product.category[0].toUpperCase() + product.category.slice(1)
+          (product.category[0] as string).toUpperCase() +
+            product.category.slice(1)
         )
       )
     }
@@ -55,5 +56,5 @@ export const useFilter = ({ products, maxPrice, setFilterProducts }: Props) => {
     setFilterProducts(filteredList)
   }
 
-  return { filterRef, applyFilters }
+  return { filterState, setFilterState, applyFilters }
 }

@@ -1,11 +1,27 @@
 import { useFilter } from '@/hooks/useFilter'
-import { Product, ProductDetail } from '@/types/product.interface'
-import clsx from 'clsx'
-import Brand from './Brand/Brand'
-import Category from './Category/Category'
+import { type Product, type ProductDetail } from '@/types/product.interface'
+import {
+  Box,
+  Button,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  Grid,
+  GridItem,
+  VStack,
+  useDisclosure
+} from '@chakra-ui/react'
+import { useMemo } from 'react'
+import { FiFilter } from 'react-icons/fi'
+import { useMediaQuery } from 'usehooks-ts'
+import ApplyButton from './ApplyButton/ApplyButton'
 import styles from './ProductFilter.module.scss'
-import Rating from './Rating/Rating'
-import Slider from './Slider/Slider'
+import ResetButton from './ResetButton/ResetButton'
+import SidebarFilter from './SidebarFilter/SidebarFilter'
 
 interface Props {
   products: Product<ProductDetail>[]
@@ -16,9 +32,16 @@ interface Props {
 }
 
 const ProductFilter = ({ products, children, setFilterProducts }: Props) => {
-  const maxPrice = Math.max(...products.map((product) => product.price))
+  const isMatches = useMediaQuery('(max-width: 768px)')
 
-  const { filterRef, applyFilters } = useFilter({
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const maxPrice = useMemo(
+    () => Math.max(...products.map((product) => product.price)),
+    [products]
+  )
+
+  const { filterState, setFilterState, applyFilters } = useFilter({
     products,
     maxPrice,
     setFilterProducts
@@ -26,36 +49,84 @@ const ProductFilter = ({ products, children, setFilterProducts }: Props) => {
 
   return (
     <>
-      <div className={styles.wrapper}>
-        <div className='w-[18.75rem]'>
-          <div className={styles.inner}>
+      {isMatches ? (
+        <>
+          <Button
+            colorScheme='green'
+            leftIcon={<FiFilter />}
+            mb={2}
+            onClick={onOpen}>
+            Filters
+          </Button>
+          <Drawer isOpen={isOpen} placement='left' size='sm' onClose={onClose}>
+            <DrawerOverlay />
+            <DrawerContent>
+              <DrawerCloseButton />
+              <DrawerHeader>Filters</DrawerHeader>
+              <DrawerBody>
+                <SidebarFilter
+                  products={products}
+                  maxPrice={maxPrice}
+                  filterState={filterState}
+                  setFilterState={setFilterState}
+                />
+              </DrawerBody>
+              <DrawerFooter>
+                <Grid
+                  w='full'
+                  templateColumns='repeat(4, 1fr)'
+                  templateRows='repeat(2, 1fr)'
+                  gap={4}>
+                  <GridItem gridArea='1 / 1 / 2 / 3'>
+                    <ResetButton
+                      maxPrice={maxPrice}
+                      setFilterState={setFilterState}
+                      setFilterProducts={() => setFilterProducts(products)}
+                      onClose={onClose}
+                    />
+                  </GridItem>
+                  <GridItem gridArea='1 / 3 / 2 / 5'>
+                    <ApplyButton
+                      applyFilters={applyFilters}
+                      onClose={onClose}
+                    />
+                  </GridItem>
+                  <GridItem
+                    gridArea='2 / 1 / 3 / 5'
+                    as={Button}
+                    onClick={onClose}>
+                    CLOSE
+                  </GridItem>
+                </Grid>
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+          {children}
+        </>
+      ) : (
+        <div className={styles.wrapper}>
+          <Box w='18.75rem'>
             <div className={styles.filter}>
-              <div>
-                <h3 className={styles.subTitle}>Slider</h3>
-                <Slider maxPrice={maxPrice} setFilter={filterRef} />
-              </div>
-              <div>
-                <h3 className={styles.subTitle}>Categories</h3>
-                <Category products={products} setFilter={filterRef} />
-              </div>
-              <div>
-                <h3 className={styles.subTitle}>Brands</h3>
-                <Brand products={products} setFilter={filterRef} />
-              </div>
-              <div>
-                <h3 className={styles.subTitle}>Rating</h3>
-                <Rating products={products} setFilter={filterRef} />
-              </div>
+              <SidebarFilter
+                products={products}
+                maxPrice={maxPrice}
+                filterState={filterState}
+                setFilterState={setFilterState}
+              />
             </div>
-            <button
-              className={clsx(styles.button, 'mb-2')}
-              onClick={applyFilters}>
-              APPLY
-            </button>
-          </div>
+            <VStack gap={3} align='stretch'>
+              <ApplyButton applyFilters={applyFilters} />
+              <ResetButton
+                maxPrice={maxPrice}
+                setFilterState={setFilterState}
+                setFilterProducts={() => setFilterProducts(products)}
+                onClose={onClose}
+              />
+            </VStack>
+          </Box>
+          {children}
         </div>
-        {children}
-      </div>
+      )}
     </>
   )
 }

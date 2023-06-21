@@ -1,6 +1,5 @@
 import { Grid } from '@chakra-ui/react'
 import { Montserrat } from 'next/font/google'
-import { useRef } from 'react'
 import Footer from './Footer/Footer'
 import Header from './Header/Header'
 import Main from './Main/Main'
@@ -16,12 +15,10 @@ interface Props {
 }
 
 const Layout = ({ children }: Props) => {
-  const mainRef = useRef<HTMLElement>(null)
-
   return (
     <Grid h='full' templateRows='1fr auto' className={montserrat.className}>
-      <Header mainRef={mainRef} />
-      <Main mainRef={mainRef}>{children}</Main>
+      <Header />
+      <Main>{children}</Main>
       <Footer />
     </Grid>
   )

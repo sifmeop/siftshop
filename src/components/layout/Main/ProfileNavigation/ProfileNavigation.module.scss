@@ -1,8 +1,8 @@
 .aside {
-  @apply mt-[6.25rem] w-full max-w-[18.75rem] border-r border-r-[#e2e8f0]/60 bg-white px-4 py-2;
+  @apply mt-[5.625rem] w-full max-w-[18.75rem] border-r border-r-[#e2e8f0]/60 bg-white px-4 py-2;
 
   @media (max-width: 768px) {
-    @apply max-w-full;
+    @apply mt-[5.1594rem] max-w-full;
   }
 }
 

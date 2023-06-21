@@ -1,5 +1,9 @@
 .product {
   @apply mb-4 flex gap-5;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .name {

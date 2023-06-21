@@ -1,20 +1,26 @@
 .wrapper {
-  @apply flex flex-col gap-3;
+  @apply flex w-[45%] flex-col gap-3;
+
   & img {
     mix-blend-mode: multiply;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
   }
 }
 
 .currentImage {
-  @apply h-[39.375rem] w-[42rem] rounded-lg border-2 border-primary px-12 py-2;
+  @apply h-full max-h-[31.25rem] w-auto rounded-lg border-2 border-primary p-4;
 
   & img {
-    @apply mx-auto h-full w-full object-contain;
+    @apply mx-auto w-auto object-contain;
+    height: inherit;
   }
 }
 
 .images {
-  @apply flex gap-3;
+  @apply flex flex-wrap gap-3;
 
   & img {
     @apply h-full w-full rounded-lg object-contain;

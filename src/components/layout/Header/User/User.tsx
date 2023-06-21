@@ -54,7 +54,7 @@ const User = ({ onCloseNav }: Props) => {
       <PopoverContent>
         <PopoverArrow />
         <PopoverBody>
-          {status === 'authenticated' ? (
+          {status === 'authenticated' && (
             <Flex direction='column' gap={2}>
               <Button
                 as={Link}
@@ -67,7 +67,8 @@ const User = ({ onCloseNav }: Props) => {
               </Button>
               <Button onClick={() => void signOut()}>Sign out</Button>
             </Flex>
-          ) : (
+          )}
+          {status === 'unauthenticated' && (
             <Button w='full' onClick={() => void signIn('google')}>
               Sign in
             </Button>

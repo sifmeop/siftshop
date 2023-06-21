@@ -47,6 +47,7 @@ const Home = () => {
 
   return (
     <>
+      <PageTitle>{'Top 3 popular products'.toUpperCase()}</PageTitle>
       <div className={styles.products}>
         {products?.bestProducts.map((product, index) => (
           <div
@@ -74,6 +75,9 @@ const Home = () => {
           </div>
         ))}
       </div>
+      <PageTitle>
+        {'You may be looking for these products'.toUpperCase()}
+      </PageTitle>
       <Marquee className={styles.marquee}>
         {products?.tickerSlider.map((product) => (
           <ProductLink

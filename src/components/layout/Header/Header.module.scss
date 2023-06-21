@@ -8,12 +8,7 @@
 }
 
 .navigation {
-  @apply flex-1 items-stretch gap-8 transition-all duration-300;
-}
-
-.overlay {
-  @apply absolute inset-0 h-screen w-screen bg-black/70;
-  z-index: 0;
+  @apply top-[5.1594rem] flex-1 items-stretch gap-8 transition-all duration-300;
 }
 
 @media (max-width: 1024px) {
