@@ -1,4 +1,6 @@
 import { fetchProducts } from '@/service/fetchProducts'
+import Loader from '@/ui/Loaders/Loader/Loader'
+import PageTitle from '@/ui/PageTitle/PageTitle'
 import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 import Gallery from './Gallery/Gallery'
@@ -9,22 +11,29 @@ import RelatedProducts from './RelatedProducts/RelatedProducts'
 const Product = () => {
   const { query } = useRouter()
 
-  const { data, isLoading } = useQuery(['product', query.id], () =>
-    fetchProducts.productById(query.id as string)
+  const { data, isLoading, isError } = useQuery(
+    ['product', query.id],
+    () => fetchProducts.productById(query.id as string),
+    { enabled: !!query.id }
   )
 
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading) return <Loader />
 
-  return data ? (
-    <>
-      <div className={styles.product}>
-        <Gallery name={data.name} images={data.image} />
-        <ProductInfo info={data} />
-      </div>
-      {/* <ProductReviews /> */}
-      <RelatedProducts category={data.category} exceptId={data.id} />
-    </>
-  ) : null
+  if (isError) {
+    return <PageTitle>Error fetch product by id</PageTitle>
+  }
+
+  return (
+    data && (
+      <>
+        <div className={styles.product}>
+          <Gallery name={data.name} images={data.image} />
+          <ProductInfo info={data} />
+        </div>
+        <RelatedProducts category={data.category} exceptId={data.id} />
+      </>
+    )
+  )
 }
 
 export default Product
