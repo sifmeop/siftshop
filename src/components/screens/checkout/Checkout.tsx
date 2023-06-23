@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { useOrders } from '@/hooks/useOrders'
 import { useCartStore } from '@/stores/cartStore'
 import { type CheckoutValues } from '@/types/checkout.interface'
@@ -35,19 +36,6 @@ const Checkout = () => {
       firstName: session?.user.name as string,
       email: session?.user.email as string,
       cardHolder: session?.user.name as string,
-      //
-      lastName: 'Eugene',
-      phone: '+380660730543',
-      address: 'fgsodfgsdfg',
-      city: 'gfsdfgs',
-      country: 'dfgsdfgsdfg',
-      zipCode: '32222',
-      cardNumber: '4444 4444 4444 4444',
-      month: '2',
-      year: '2000',
-      cvc: '333',
-      agreement: true,
-      //
       billing: 'novaposhta'
     },
     resolver: yupResolver(schema)
@@ -90,7 +78,7 @@ const Checkout = () => {
 
   return (
     <Flex className={styles.wrapper}>
-      <form onSubmit={void onSubmit}>
+      <form onSubmit={onSubmit}>
         <SectionWithTitle
           title='Billing info'
           subTitle='Please enter your billing info'
