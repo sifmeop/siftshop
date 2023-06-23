@@ -11,7 +11,7 @@ const config = {
   images: {
     domains: [
       'localhost',
-      'content2.rozetka.com.ua',
+      'backend-siftshop.vercel.app',
       'lh3.googleusercontent.com'
     ]
   }
