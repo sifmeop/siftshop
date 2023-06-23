@@ -46,21 +46,21 @@ const PopupActions = ({ product }: Props) => {
               justifyContent='flex-start'
               leftIcon={<AiOutlineDelete size='1.25rem' />}
               onClick={() => removeFromComparing(product.category, product.id)}>
-              Видалити
+              Remove
             </Button>
             {isInWishlist ? (
               <Button
                 justifyContent='flex-start'
                 leftIcon={<TbHeartOff size='1.25rem' />}
                 onClick={() => removeFromWishlist(product.id)}>
-                Видалити
+                Remove
               </Button>
             ) : (
               <Button
                 justifyContent='flex-start'
                 leftIcon={<TbHeart size='1.25rem' />}
                 onClick={() => addToWishlist(product)}>
-                У список бажань
+                To the wishlist
               </Button>
             )}
           </Flex>

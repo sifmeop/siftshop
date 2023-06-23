@@ -18,11 +18,11 @@ const ProductInfo = ({ info }: Props) => {
         <Heading as='h1' size='xl'>
           {info.name}
         </Heading>
-        <Flex flexWrap='wrap' gap={4}>
+        <Flex className={styles.infoTop}>
           <Heading as='h2' size='lg'>
             {currencyFormat(info.price)}
           </Heading>
-          <Flex flexWrap='wrap' gap={4}>
+          <Flex flexWrap='wrap' gap={4} flex={1}>
             <CartButton product={info} />
             <ComparingButton
               product={info}
