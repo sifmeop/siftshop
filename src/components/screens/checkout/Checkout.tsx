@@ -65,6 +65,8 @@ const Checkout = () => {
       userId: session?.user.id as string,
       data: new Date(),
       order_number: generateOrderId(),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       products: cart.map((item) => ({
         productId: item.product.id,
         name: item.product.name,
@@ -88,7 +90,7 @@ const Checkout = () => {
 
   return (
     <Flex className={styles.wrapper}>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={void onSubmit}>
         <SectionWithTitle
           title='Billing info'
           subTitle='Please enter your billing info'

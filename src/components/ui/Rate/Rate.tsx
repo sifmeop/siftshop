@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Rate = ({ rating }: Props) => {
-  const stars = [...Array(Math.floor(rating)).fill('*')].map(
+  const stars = [...(Array(Math.floor(rating)).fill('*') as string[])].map(
     (_, index) => index + 1
   )
 

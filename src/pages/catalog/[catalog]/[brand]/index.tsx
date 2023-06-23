@@ -1,8 +1,8 @@
 import { fetchProducts } from '@/service/fetchProducts'
 import {
-  Product,
-  ProductCategory,
-  ProductDetail
+  type Product,
+  type ProductCategory,
+  type ProductDetail
 } from '@/types/product.interface'
 import ProductFilter from '@/ui/ProductFilter/ProductFilter'
 import ProductList from '@/ui/ProductList/ProductList'
@@ -40,11 +40,11 @@ const DynamicBrandPage = () => {
         breadcrumbs={[
           { title: 'Catalog', link: '/catalog', icon: MdDashboard },
           {
-            title: `${catalog[0].toUpperCase() + catalog.slice(1)}`,
+            title: `${(catalog[0] as string).toUpperCase() + catalog.slice(1)}`,
             link: `/catalog/${catalog}`,
             icon: breadcrumbCategory(catalog as ProductCategory)
           },
-          { title: `${brand[0].toUpperCase() + brand.slice(1)}` }
+          { title: `${(brand[0] as string).toUpperCase() + brand.slice(1)}` }
         ]}
       />
     </ProductFilter>

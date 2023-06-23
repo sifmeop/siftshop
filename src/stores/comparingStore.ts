@@ -1,4 +1,4 @@
-import { Product, ProductDetail } from '@/types/product.interface'
+import { type Product, type ProductDetail } from '@/types/product.interface'
 import { create } from 'zustand'
 
 export interface Categories {

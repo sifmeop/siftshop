@@ -21,7 +21,7 @@ const Header = () => {
         <Overlay isOpen={isOpen} onClose={onCloseNav} />
         <Flex
           className={clsx(styles.navigation, {
-            [styles.navigationMobile]: isOpen
+            [styles.navigationMobile as string]: isOpen
           })}>
           <Catalog onCloseNav={onCloseNav} />
           <Search onCloseNav={onCloseNav} />

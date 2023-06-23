@@ -1,4 +1,4 @@
-import { CheckoutValues } from '@/types/checkout.interface'
+import { type CheckoutValues } from '@/types/checkout.interface'
 import { delivery } from '@/utils/constants'
 import { currencyFormat } from '@/utils/currencyFormat'
 import {
@@ -9,10 +9,10 @@ import {
   RadioGroup,
   Stack,
   Text,
-  TextProps
+  type TextProps
 } from '@chakra-ui/react'
 import Image from 'next/image'
-import { Control, Controller } from 'react-hook-form'
+import { Controller, type Control } from 'react-hook-form'
 
 interface Props {
   control: Control<CheckoutValues, any>

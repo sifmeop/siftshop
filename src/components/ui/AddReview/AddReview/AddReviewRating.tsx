@@ -14,7 +14,9 @@ const labels = ['Поганий', 'Так собі', 'Нормальний', 'Д
 const AddReviewRating = ({ rating, setRating }: Props) => {
   const [hover, setHover] = useState<number>(0)
 
-  const start = [...Array(5).fill('*')].map((_, index) => index + 1)
+  const start = [...(Array(5).fill('*') as string[])].map(
+    (_, index) => index + 1
+  )
 
   return (
     <HStack className={styles.box}>
@@ -23,7 +25,7 @@ const AddReviewRating = ({ rating, setRating }: Props) => {
           <FaStar
             size='3rem'
             className={clsx(styles.rating, {
-              [styles.rated]: rate <= (hover || rating)
+              [styles.rated as string]: rate <= (hover || rating)
             })}
             onClick={() => setRating(rate)}
             onMouseEnter={() => setHover(rate)}

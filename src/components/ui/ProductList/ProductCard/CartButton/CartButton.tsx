@@ -1,5 +1,5 @@
 import { useCartStore } from '@/stores/cartStore'
-import { Product, ProductDetail } from '@/types/product.interface'
+import { type Product, type ProductDetail } from '@/types/product.interface'
 import { Box } from '@chakra-ui/react'
 import clsx from 'clsx'
 import { TbShoppingCart } from 'react-icons/tb'
@@ -24,7 +24,7 @@ const CartButton = ({ product, view }: Props) => {
       {isInCart ? (
         <div
           className={clsx(styles.optionalChoice, {
-            [styles.optionalChoiceList]: view === 'list'
+            [styles.optionalChoiceList as string]: view === 'list'
           })}>
           <button onClick={() => incrementProduct(product.id)}>+</button>
           <Box className='product__count'>{cartItem?.count}</Box>

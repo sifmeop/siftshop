@@ -1,5 +1,5 @@
 import { useCartStore } from '@/stores/cartStore'
-import { Product, ProductDetail } from '@/types/product.interface'
+import { type Product, type ProductDetail } from '@/types/product.interface'
 import { TbShoppingCart, TbShoppingCartOff } from 'react-icons/tb'
 import styles from './SimpleCartButton.module.scss'
 

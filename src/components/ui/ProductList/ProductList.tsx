@@ -53,7 +53,7 @@ const ProductList = ({ products, breadcrumbs, isFilter = true }: Props) => {
       )}
       <Box
         className={clsx(styles.products, {
-          [styles.productsList]: toggleView === 'list'
+          [styles.productsList as string]: toggleView === 'list'
         })}>
         {sortedProducts.map((product) => (
           <ProductCard key={product.id} product={product} view={toggleView} />

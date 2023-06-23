@@ -21,7 +21,7 @@ const ProfileNavigation = () => {
       <Link
         href='/profile'
         className={clsx(styles.link, {
-          [styles.activeLink]: '/profile' === pathname
+          [styles.activeLink as string]: '/profile' === pathname
         })}>
         <Box className={styles.icon}>
           <FaRegUserCircle size='1.25rem' />
@@ -42,7 +42,7 @@ const ProfileNavigation = () => {
             <Link
               href={link.href}
               className={clsx(styles.link, {
-                [styles.activeLink]: link.href === pathname
+                [styles.activeLink as string]: link.href === pathname
               })}>
               <Box className={styles.icon}>{<link.icon size='1.25rem' />}</Box>
               {link.title}

@@ -1,5 +1,5 @@
 import { useComparingStore } from '@/stores/comparingStore'
-import { Product, ProductDetail } from '@/types/product.interface'
+import { type Product, type ProductDetail } from '@/types/product.interface'
 import clsx from 'clsx'
 import { BsCheckCircleFill } from 'react-icons/bs'
 import { RiScalesLine } from 'react-icons/ri'
@@ -22,7 +22,10 @@ const ComparingButton = ({ className, product }: Props) => {
     <button
       className={clsx(className, 'relative')}
       onClick={() => removeFromComparing(product.category, product.id)}>
-      <BsCheckCircleFill color='#6A983C' className='absolute right-1 top-1 bg-white rounded-full border-[#6A983C]' />
+      <BsCheckCircleFill
+        color='#6A983C'
+        className='absolute right-1 top-1 rounded-full border-[#6A983C] bg-white'
+      />
       <RiScalesLine size='2rem' />
     </button>
   ) : (

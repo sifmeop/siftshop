@@ -23,7 +23,8 @@ const Category = ({ products, value, setFilter }: Props) => {
     for (const product of products) {
       const category = product.category
       const replacedCategory = replaceCategoryTitle(category)
-      categories[replacedCategory] = (categories[replacedCategory] ?? 0) + 1
+      categories[replacedCategory as string] =
+        (categories[replacedCategory as string] ?? 0) + 1
     }
 
     return (

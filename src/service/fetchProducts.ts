@@ -1,7 +1,7 @@
 import {
-  MainPageProduct,
-  Product,
-  ProductDetail
+  type MainPageProduct,
+  type Product,
+  type ProductDetail
 } from '@/types/product.interface'
 import { API_URL } from '@/utils/constants'
 import axios from 'axios'
@@ -38,11 +38,11 @@ export const fetchProducts = {
   productsByCatalog: async (category: string | string[] | undefined) => {
     try {
       const response = await axios.get<Product<ProductDetail>[]>(
-        `${API_URL}/${category}`
+        `${API_URL}/${category as string}`
       )
       return response.data
     } catch (error) {
-      console.log(`Error fetch category products: ${category}`, error)
+      console.log(`Error fetch category products: ${category as string}`, error)
     }
   },
   productsByBrand: async (category: string, brand: string) => {

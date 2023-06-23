@@ -1,5 +1,5 @@
 import { useWishlistStore } from '@/stores/wishlistStore'
-import { Product, ProductDetail } from '@/types/product.interface'
+import { type Product, type ProductDetail } from '@/types/product.interface'
 import { TbHeart, TbHeartOff } from 'react-icons/tb'
 
 interface Props {

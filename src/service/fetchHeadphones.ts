@@ -1,4 +1,4 @@
-import { HeadphoneDetail, Product } from '@/types/product.interface'
+import { type HeadphoneDetail, type Product } from '@/types/product.interface'
 import { API_URL } from '@/utils/constants'
 import axios from 'axios'
 

@@ -1,4 +1,4 @@
-import { Cart, useCartStore } from '@/stores/cartStore'
+import { useCartStore, type Cart } from '@/stores/cartStore'
 import { Button, HStack, Input, useNumberInput } from '@chakra-ui/react'
 
 interface Props {

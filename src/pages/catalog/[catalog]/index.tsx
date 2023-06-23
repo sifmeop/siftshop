@@ -1,5 +1,5 @@
 import { fetchProducts } from '@/service/fetchProducts'
-import { Product, ProductDetail } from '@/types/product.interface'
+import { type Product, type ProductDetail } from '@/types/product.interface'
 import ProductFilter from '@/ui/ProductFilter/ProductFilter'
 import ProductList from '@/ui/ProductList/ProductList'
 import { useQuery } from '@tanstack/react-query'
@@ -33,7 +33,11 @@ const DynamicCatalogPage = () => {
         products={filterProducts}
         breadcrumbs={[
           { title: 'Catalog', link: '/catalog', icon: MdDashboard },
-          { title: `${category[0].toUpperCase() + category.slice(1)}` }
+          {
+            title: `${
+              (category[0] as string).toUpperCase() + category.slice(1)
+            }`
+          }
         ]}
       />
     </ProductFilter>

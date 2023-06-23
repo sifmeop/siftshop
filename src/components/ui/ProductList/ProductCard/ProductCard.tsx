@@ -25,7 +25,7 @@ const ProductCard = ({ product, view = 'compact' }: Props) => {
       <ProductLink
         productId={product.id}
         className={clsx(styles.imageWrapper, {
-          [styles.imageWrapperList]: view === 'list'
+          [styles.imageWrapperList as string]: view === 'list'
         })}>
         <Image
           style={{ height: view === 'compact' ? '18.75rem' : '10rem' }}
@@ -51,7 +51,7 @@ const ProductCard = ({ product, view = 'compact' }: Props) => {
       </Box>
       <Box
         className={clsx(styles.buttons, {
-          [styles.buttonsList]: view === 'list',
+          [styles.buttonsList as string]: view === 'list',
           ['grid-rows-2']: view === 'list',
           ['grid-cols-2']: view === 'compact'
         })}>

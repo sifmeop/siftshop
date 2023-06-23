@@ -14,7 +14,7 @@ const CartList = () => {
   return (
     <ul className={styles.list}>
       {cart.map((item, index) => (
-        <li key={item.product.id} className={styles.product}>
+        <li key={item.product.id}>
           <div>
             <div className={styles.top}>
               <div className={styles.content}>
@@ -23,7 +23,7 @@ const CartList = () => {
                     width={100}
                     height={150}
                     className={styles.image}
-                    src={`${API_URL}/${item.product.image[0]}`}
+                    src={`${API_URL}/${item.product.image[0] as string}`}
                     alt='item.product.name'
                     quality={100}
                   />

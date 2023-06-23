@@ -1,7 +1,7 @@
 import {
-  HeadphoneDetail,
-  PhoneDetail,
-  Product
+  type HeadphoneDetail,
+  type PhoneDetail,
+  type Product
 } from '@/types/product.interface'
 import { API_URL } from '@/utils/constants'
 import axios from 'axios'

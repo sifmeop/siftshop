@@ -30,7 +30,7 @@ const Gallery = ({ name, images }: Props) => {
           <button
             key={image}
             className={clsx(styles.button, {
-              [styles.activeImage]: index === currentImage
+              [styles.activeImage as string]: index === currentImage
             })}
             onClick={() => setCurrentImage(index)}>
             <Image

@@ -1,6 +1,6 @@
-import { CheckoutValues } from '@/types/checkout.interface'
+import { type CheckoutValues } from '@/types/checkout.interface'
 import { FormControl, FormLabel, Textarea } from '@chakra-ui/react'
-import { UseFormRegister } from 'react-hook-form'
+import { type UseFormRegister } from 'react-hook-form'
 
 interface Props {
   register: UseFormRegister<CheckoutValues>

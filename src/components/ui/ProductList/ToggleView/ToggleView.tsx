@@ -15,14 +15,14 @@ const ToggleView = ({ toggleView, setToggleView }: Props) => {
     <Flex rounded='lg'>
       <button
         className={clsx(styles.button, {
-          [styles.active]: toggleView === 'compact'
+          [styles.active as string]: toggleView === 'compact'
         })}
         onClick={() => setToggleView('compact')}>
         <TfiViewGrid size='1.5rem' />
       </button>
       <button
         className={clsx(styles.button, {
-          [styles.active]: toggleView === 'list'
+          [styles.active as string]: toggleView === 'list'
         })}
         onClick={() => setToggleView('list')}>
         <TfiViewList size='1.5rem' />

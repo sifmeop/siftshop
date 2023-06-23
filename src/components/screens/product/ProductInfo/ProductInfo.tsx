@@ -24,8 +24,14 @@ const ProductInfo = ({ info }: Props) => {
           </Heading>
           <Flex flexWrap='wrap' gap={4}>
             <CartButton product={info} />
-            <ComparingButton product={info} className={styles.btnOther} />
-            <WishlistButton product={info} className={styles.btnOther} />
+            <ComparingButton
+              product={info}
+              className={styles.btnOther as string}
+            />
+            <WishlistButton
+              product={info}
+              className={styles.btnOther as string}
+            />
           </Flex>
         </Flex>
         <Details product={info} />
