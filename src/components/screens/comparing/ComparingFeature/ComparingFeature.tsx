@@ -9,7 +9,7 @@ interface Props {
 
 const ComparingFeature = ({ comparing }: Props) => {
   const { details } = useComparisonProducts(comparing)
-
+  console.log(details)
   return (
     <Box>
       {details.map((product) => (

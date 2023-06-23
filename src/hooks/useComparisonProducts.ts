@@ -1,16 +1,22 @@
 import { type Product, type ProductDetail } from '@/types/product.interface'
+import { currencyFormat } from '@/utils/currencyFormat'
 
 export const useComparisonProducts = (products: Product<ProductDetail>[]) => {
   const detailTitles = Object.keys(products[0]?.details as object).map(
     (detail) => detail
   )
 
+  detailTitles.push('price')
+
   const details = detailTitles.map((title, index) => ({
     title: replaceTitle(title),
-    details: products.map(({ name, details }) => ({
-      product: name,
-      detail: details[detailTitles[index] as keyof ProductDetail]
-    }))
+    details: products.map(({ name, details, price }) => {
+      const editedDetails = { ...details, price: currencyFormat(price) }
+      return {
+        product: name,
+        detail: editedDetails[detailTitles[index] as keyof ProductDetail]
+      }
+    })
   }))
 
   return { details }
