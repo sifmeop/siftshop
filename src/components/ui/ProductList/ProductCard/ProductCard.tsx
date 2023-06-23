@@ -1,10 +1,11 @@
-import { ViewFilter } from '@/types/filter.interface'
-import { Product, ProductDetail } from '@/types/product.interface'
+import { type ViewFilter } from '@/types/filter.interface'
+import { type Product, type ProductDetail } from '@/types/product.interface'
+import ProductLink from '@/ui/ProductLink/ProductLink'
 import { API_URL } from '@/utils/constants'
 import { currencyFormat } from '@/utils/currencyFormat'
+import { Box, Flex, HStack } from '@chakra-ui/react'
 import clsx from 'clsx'
 import Image from 'next/image'
-import Link from 'next/link'
 import { AiOutlineStar } from 'react-icons/ai'
 import CartButton from './CartButton/CartButton'
 import styles from './ProductCard.module.scss'
@@ -17,12 +18,12 @@ interface Props {
 
 const ProductCard = ({ product, view = 'compact' }: Props) => {
   return (
-    <div
+    <Flex
       className={clsx(styles.product, {
         ['flex-col']: view === 'compact'
       })}>
-      <Link
-        href={`/product/${product.id}`}
+      <ProductLink
+        productId={product.id}
         className={clsx(styles.imageWrapper, {
           [styles.imageWrapperList]: view === 'list'
         })}>
@@ -30,25 +31,25 @@ const ProductCard = ({ product, view = 'compact' }: Props) => {
           style={{ height: view === 'compact' ? '18.75rem' : '10rem' }}
           width={500}
           height={500}
-          src={`${API_URL}/${product.image[0]}`}
+          src={`${API_URL}/${product.image[0] as string}`}
           alt={`Product image preview for ${product.name}`}
           placeholder='blur'
-          blurDataURL={`${API_URL}/${product.image[0]}`}
+          blurDataURL={`${API_URL}/${product.image[0] as string}`}
         />
-      </Link>
-      <div className={styles.info}>
-        <div className={styles.infoTop}>
+      </ProductLink>
+      <Box flex={1} padding='1rem 1.5rem'>
+        <HStack className={styles.infoTop}>
           <span className={styles.rating}>
             {product.rating}
             <AiOutlineStar />
           </span>
           <span>{currencyFormat(product.price)}</span>
-        </div>
-        <h2 className={styles.name}>
-          <Link href={`/product/${product.id}`}>{product.name}</Link>
-        </h2>
-      </div>
-      <div
+        </HStack>
+        <ProductLink productId={product.id} className='hover:underline'>
+          {product.name}
+        </ProductLink>
+      </Box>
+      <Box
         className={clsx(styles.buttons, {
           [styles.buttonsList]: view === 'list',
           ['grid-rows-2']: view === 'list',
@@ -56,8 +57,8 @@ const ProductCard = ({ product, view = 'compact' }: Props) => {
         })}>
         <CartButton product={product} view={view} />
         <WishlistButton product={product} />
-      </div>
-    </div>
+      </Box>
+    </Flex>
   )
 }
 

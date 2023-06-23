@@ -1,4 +1,5 @@
-import { ViewFilter } from '@/types/filter.interface'
+import { type ViewFilter } from '@/types/filter.interface'
+import { Flex } from '@chakra-ui/react'
 import clsx from 'clsx'
 import { memo } from 'react'
 import { TfiViewGrid, TfiViewList } from 'react-icons/tfi'
@@ -11,7 +12,7 @@ interface Props {
 
 const ToggleView = ({ toggleView, setToggleView }: Props) => {
   return (
-    <div className={styles.viewButtons}>
+    <Flex rounded='lg'>
       <button
         className={clsx(styles.button, {
           [styles.active]: toggleView === 'compact'
@@ -26,7 +27,7 @@ const ToggleView = ({ toggleView, setToggleView }: Props) => {
         onClick={() => setToggleView('list')}>
         <TfiViewList size='1.5rem' />
       </button>
-    </div>
+    </Flex>
   )
 }
 

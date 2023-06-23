@@ -1,11 +1,5 @@
-$gap: 1.25rem;
-
 .products {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: $gap;
-  margin-bottom: $gap;
+  @apply mb-5 grid grid-cols-6 grid-rows-2 gap-5;
 
   & > div {
     @apply rounded-lg bg-white p-5;
@@ -17,11 +11,10 @@ $gap: 1.25rem;
 }
 
 .productInner {
-  @apply relative flex h-full w-full flex-col items-center justify-center;
+  @apply relative h-full w-full flex-col;
 
   & > img {
-    @apply relative h-full w-full object-contain transition duration-300 ease-in-out hover:scale-90;
-    transform: scale(0.8);
+    @apply relative h-full w-full scale-[.8] object-contain transition duration-300 ease-in-out hover:scale-90;
   }
 }
 
@@ -65,8 +58,7 @@ $gap: 1.25rem;
   z-index: 0;
 
   &Item {
-    @apply flex h-full items-center gap-4 rounded-lg bg-white p-5 hover:underline;
-    margin-left: $gap;
+    @apply ml-5 flex h-full items-center gap-4 rounded-lg bg-white p-5 hover:underline;
 
     & img {
       @apply object-contain mix-blend-multiply;

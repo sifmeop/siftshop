@@ -1,34 +1,7 @@
 .search {
-  @apply relative mr-auto flex max-w-xl;
-  flex: 1;
-  z-index: 0;
+  @apply mr-auto max-w-xl flex-1;
 
   @media (max-width: 1024px) {
     @apply mr-0 w-full;
   }
-}
-
-.icon {
-  @apply pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 transform;
-  z-index: 2;
-}
-
-.input {
-  @apply w-full rounded-l-lg border bg-white pl-[3rem] pr-3 text-lg outline-offset-2 transition-all duration-300 focus:outline-none;
-  outline: transparent solid 2px;
-  z-index: 1;
-
-  &:hover {
-    box-shadow: rgb(203 213 224) 0px 0px 0px 2px;
-    border-color: rgb(203 213 224);
-  }
-
-  &:focus {
-    box-shadow: #6a983c 0px 0px 0px 2px;
-    border-color: #6a983c;
-  }
-}
-
-.button {
-  @apply w-[150px] rounded-r-lg bg-primary px-5 py-2 text-xl font-semibold text-white transition-colors hover:bg-primary-dark active:bg-primary-darker;
 }

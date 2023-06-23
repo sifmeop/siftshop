@@ -4,6 +4,7 @@ import {
   type ViewFilter
 } from '@/types/filter.interface'
 import { type Product, type ProductDetail } from '@/types/product.interface'
+import { Box, Flex } from '@chakra-ui/react'
 import clsx from 'clsx'
 import { useMemo, useState } from 'react'
 import Breadcrumb from '../Breadcrumb/Breadcrumb'
@@ -40,25 +41,25 @@ const ProductList = ({ products, breadcrumbs, isFilter = true }: Props) => {
   if (!sortedProducts?.length) return null
 
   return (
-    <div>
+    <Box>
       {isFilter && (
-        <div className={styles.top}>
+        <Flex className={styles.top}>
           {breadcrumbs && <Breadcrumb items={breadcrumbs} />}
-          <div className={styles.filters}>
+          <Flex className={styles.filters}>
             <SortFilter setSortFilter={setSortFilter} />
             <ToggleView toggleView={toggleView} setToggleView={setToggleView} />
-          </div>
-        </div>
+          </Flex>
+        </Flex>
       )}
-      <div
+      <Box
         className={clsx(styles.products, {
           [styles.productsList]: toggleView === 'list'
         })}>
         {sortedProducts.map((product) => (
           <ProductCard key={product.id} product={product} view={toggleView} />
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 

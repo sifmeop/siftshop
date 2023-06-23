@@ -31,7 +31,7 @@ const Search = () => {
     return (
       <h1 className='page__subtitle'>
         There are no products that match{' '}
-        <span className='text-primary'>{`"${query.value}"`}</span>
+        <span className='text-primary'>{`"${query.value as string}"`}</span>
       </h1>
     )
   }
@@ -40,7 +40,7 @@ const Search = () => {
     <>
       <PageTitle>
         Showing {pluralizeResults(data.length)} for{' '}
-        {<span className='text-primary'>{`"${query.value}"`}</span>}
+        {<span className='text-primary'>{`"${query.value as string}"`}</span>}
       </PageTitle>
       <ProductList products={data} breadcrumbs={[{ title: 'Search' }]} />
     </>

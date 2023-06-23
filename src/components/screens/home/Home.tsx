@@ -4,24 +4,11 @@ import PageTitle from '@/ui/PageTitle/PageTitle'
 import ProductLink from '@/ui/ProductLink/ProductLink'
 import { API_URL } from '@/utils/constants'
 import { currencyFormat } from '@/utils/currencyFormat'
-import { Text } from '@chakra-ui/react'
+import { Box, Text, VStack } from '@chakra-ui/react'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Marquee from 'react-fast-marquee'
 import styles from './Home.module.scss'
-
-interface Styles {
-  products: string
-  productInner: string
-  productItem1: string
-  productItem2: string
-  productItem3: string
-  name: string
-  price: string
-  marquee: string
-  marqueeItem: string
-  productName: string
-}
 
 const Home = () => {
   const {
@@ -48,21 +35,21 @@ const Home = () => {
   return (
     <>
       <PageTitle>{'Top 3 popular products'.toUpperCase()}</PageTitle>
-      <div className={styles.products}>
+      <Box className={styles.products}>
         {products?.bestProducts.map((product, index) => (
-          <div
+          <Box
             key={product.id}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             className={styles[`productItem${index + 1}`]}>
             <ProductLink productId={product.id} className='block h-full'>
-              <div className={styles.productInner}>
-                <div className='w-full'>
-                  <h2 className={styles.name}>{product.name}</h2>
-                  <p className={styles.price}>
+              <VStack className={styles.productInner}>
+                <Box w='full'>
+                  <Text className={styles.name}>{product.name}</Text>
+                  <Text className={styles.price}>
                     {currencyFormat(product.price)}
-                  </p>
-                </div>
+                  </Text>
+                </Box>
                 <Image
                   width={1000}
                   height={1000}
@@ -70,11 +57,11 @@ const Home = () => {
                   alt={`Product ${product.name}`}
                   quality={100}
                 />
-              </div>
+              </VStack>
             </ProductLink>
-          </div>
+          </Box>
         ))}
-      </div>
+      </Box>
       <PageTitle>
         {'You may be looking for these products'.toUpperCase()}
       </PageTitle>

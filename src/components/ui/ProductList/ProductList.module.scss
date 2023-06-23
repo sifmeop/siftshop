@@ -4,11 +4,11 @@
 }
 
 .top {
-  @apply mb-4 flex flex-wrap items-end justify-between gap-2;
+  @apply mb-4 flex-wrap items-end justify-between gap-2;
 }
 
 .filters {
-  @apply flex justify-end gap-4;
+  @apply justify-end gap-4;
 }
 
 .productsList {

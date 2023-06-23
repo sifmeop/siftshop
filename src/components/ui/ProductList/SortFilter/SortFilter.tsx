@@ -1,10 +1,15 @@
 import { type SortFilter as TypeValue } from '@/types/filter.interface'
+import { Select } from '@chakra-ui/react'
 
 interface Props {
   setSortFilter: (value: TypeValue) => void
 }
 
-import { Select } from '@chakra-ui/react'
+const options = [
+  { value: 'rating', label: 'Behind the rating' },
+  { value: 'cheap', label: 'From expensive to cheap' },
+  { value: 'expensive', label: 'From cheap to expensive' }
+]
 
 const SortFilter = ({ setSortFilter }: Props) => {
   return (
@@ -14,16 +19,16 @@ const SortFilter = ({ setSortFilter }: Props) => {
       width='full'
       backgroundColor='white'
       fontFamily='inherit'
+      focusBorderColor='green'
       onChange={(e) => setSortFilter(e.target.value as TypeValue)}>
-      <option style={{ fontFamily: 'sans-serif' }} value='rating'>
-        Behind the rating
-      </option>
-      <option style={{ fontFamily: 'sans-serif' }} value='cheap'>
-        From expensive to cheap
-      </option>
-      <option style={{ fontFamily: 'sans-serif' }} value='expensive'>
-        From cheap to expensive
-      </option>
+      {options.map((option) => (
+        <option
+          key={option.value}
+          style={{ fontFamily: 'sans-serif' }}
+          value={option.value}>
+          {option.label}
+        </option>
+      ))}
     </Select>
   )
 }

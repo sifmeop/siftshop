@@ -1,6 +1,13 @@
-import Image from 'next/image'
+import {
+  Button,
+  Flex,
+  Input,
+  InputGroup,
+  InputLeftElement
+} from '@chakra-ui/react'
 import { useRouter } from 'next/navigation'
 import { useRef } from 'react'
+import { BiSearch } from 'react-icons/bi'
 import styles from './Search.module.scss'
 
 interface Props {
@@ -20,25 +27,29 @@ const Search = ({ onCloseNav }: Props) => {
   }
 
   return (
-    <div className={styles.search}>
-      <Image
-        className={styles.icon}
-        width={30}
-        height={30}
-        src='/icons/search.svg'
-        alt='Search icon'
-      />
-      <input
-        ref={valueRef}
-        type='text'
-        className={styles.input}
-        placeholder='Phone...'
-        onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-      />
-      <button className={styles.button} onClick={handleSearch}>
+    <Flex className={styles.search}>
+      <InputGroup>
+        <InputLeftElement h='100%' pointerEvents='none'>
+          <BiSearch size='1.5rem' />
+        </InputLeftElement>
+        <Input
+          ref={valueRef}
+          h='3.125rem'
+          backgroundColor='white'
+          roundedRight='none'
+          focusBorderColor='green'
+          onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+          placeholder='Phone...'
+        />
+      </InputGroup>
+      <Button
+        h='3.125rem'
+        roundedLeft='none'
+        colorScheme='green'
+        onClick={handleSearch}>
         Search
-      </button>
-    </div>
+      </Button>
+    </Flex>
   )
 }
 
