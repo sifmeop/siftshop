@@ -1,23 +1,15 @@
 .link {
   @apply flex items-center gap-2 p-4 hover:bg-[#DFDFDF];
 
-  &Catalog:hover {
-    &:first-child {
-      border-top-left-radius: 0.5rem;
-    }
-
-    &:last-child {
-      border-bottom-left-radius: 0.5rem;
-    }
+  &All {
+    @apply rounded-t-lg border-b border-b-[#DFDFDF];
   }
 
-  &Brand:hover {
-    &:first-child {
-      border-top-right-radius: 0.5rem;
-    }
+  &Catalog:last-child {
+    border-bottom-left-radius: 0.5rem;
+  }
 
-    &:last-child {
-      border-bottom-right-radius: 0.5rem;
-    }
+  &Brand:last-child {
+    border-bottom-right-radius: 0.5rem;
   }
 }

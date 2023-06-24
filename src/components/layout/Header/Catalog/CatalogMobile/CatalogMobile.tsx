@@ -11,6 +11,7 @@ import {
 import clsx from 'clsx'
 import Link from 'next/link'
 import React from 'react'
+import { RxDashboard } from 'react-icons/rx'
 import { catalogs } from '../catalogs'
 import styles from './CatalogMobile.module.scss'
 
@@ -28,6 +29,10 @@ const CatalogMobile = ({ isOpen, onCloseNav, onCloseCatalog }: Props) => {
         <DrawerCloseButton />
         <DrawerHeader>Catalog</DrawerHeader>
         <DrawerBody>
+          <Link href='/catalog' className={styles.link} onClick={onCloseNav}>
+            <RxDashboard size='1.5rem' />
+            Catalog
+          </Link>
           {catalogs.map((catalog) => (
             <React.Fragment key={catalog.id}>
               <Link

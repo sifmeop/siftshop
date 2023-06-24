@@ -6,6 +6,7 @@ import {
 } from '@/types/product.interface'
 import ProductFilter from '@/ui/ProductFilter/ProductFilter'
 import ProductList from '@/ui/ProductList/ProductList'
+import Meta from '@/utils/Meta'
 import { breadcrumbCategory } from '@/utils/breadcrumbCategory'
 import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
@@ -34,20 +35,28 @@ const DynamicBrandPage = () => {
   if (!data) return
 
   return (
-    <ProductFilter products={data} setFilterProducts={setFilterProducts}>
-      <ProductList
-        products={filterProducts}
-        breadcrumbs={[
-          { title: 'Catalog', link: '/catalog', icon: MdDashboard },
-          {
-            title: `${(catalog[0] as string).toUpperCase() + catalog.slice(1)}`,
-            link: `/catalog/${catalog}`,
-            icon: breadcrumbCategory(catalog as ProductCategory)
-          },
-          { title: `${(brand[0] as string).toUpperCase() + brand.slice(1)}` }
-        ]}
+    <>
+      <Meta
+        title={`Brand ${brand}`}
+        description={`Page with product brands ${brand}`}
       />
-    </ProductFilter>
+      <ProductFilter products={data} setFilterProducts={setFilterProducts}>
+        <ProductList
+          products={filterProducts}
+          breadcrumbs={[
+            { title: 'Catalog', link: '/catalog', icon: MdDashboard },
+            {
+              title: `${
+                (catalog[0] as string).toUpperCase() + catalog.slice(1)
+              }`,
+              link: `/catalog/${catalog}`,
+              icon: breadcrumbCategory(catalog as ProductCategory)
+            },
+            { title: `${(brand[0] as string).toUpperCase() + brand.slice(1)}` }
+          ]}
+        />
+      </ProductFilter>
+    </>
   )
 }
 

@@ -1,6 +1,7 @@
 import { fetchProducts } from '@/service/fetchProducts'
 import Loader from '@/ui/Loaders/Loader/Loader'
 import PageTitle from '@/ui/PageTitle/PageTitle'
+import Meta from '@/utils/Meta'
 import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 import Gallery from './Gallery/Gallery'
@@ -24,15 +25,23 @@ const Product = () => {
   }
 
   return (
-    data && (
-      <>
-        <div className={styles.product}>
-          <Gallery name={data.name} images={data.image} />
-          <ProductInfo info={data} />
-        </div>
-        <RelatedProducts category={data.category} exceptId={data.id} />
-      </>
-    )
+    <>
+      <Meta
+        title={data?.name ?? 'Error fetch product by id'}
+        description={`Product page ${
+          data?.name ?? 'Error fetch product by id'
+        }`}
+      />
+      {data && (
+        <>
+          <div className={styles.product}>
+            <Gallery name={data.name} images={data.image} />
+            <ProductInfo info={data} />
+          </div>
+          <RelatedProducts category={data.category} exceptId={data.id} />
+        </>
+      )}
+    </>
   )
 }
 

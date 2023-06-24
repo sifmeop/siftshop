@@ -12,6 +12,7 @@ interface Props {
 
 const Catalog = ({ isOpen, onCloseNav, onToggle }: Props) => {
   const isMatch = useMediaQuery('(max-width: 1024px)')
+
   const {
     isOpen: isOpenCatalog,
     onClose: onCloseCatalog,
@@ -51,11 +52,7 @@ const Catalog = ({ isOpen, onCloseNav, onToggle }: Props) => {
             onCloseCatalog={onCloseCatalog}
           />
         ) : (
-          <>
-            {isOpen && (
-              <CatalogDesktop isOpen={isOpen} onCloseNav={onCloseNav} />
-            )}
-          </>
+          <>{isOpen && <CatalogDesktop onCloseNav={onCloseNav} />}</>
         )}
       </Box>
     </>
