@@ -1,6 +1,4 @@
 import { Box } from '@chakra-ui/react'
-import { useEffect } from 'react'
-import { useMediaQuery } from 'usehooks-ts'
 import styles from './Overlay.module.scss'
 
 interface Props {
@@ -8,12 +6,6 @@ interface Props {
 }
 
 const Overlay = ({ onClose }: Props) => {
-  const isMatches = useMediaQuery('(min-width: 1024px)')
-
-  useEffect(() => {
-    if (!isMatches) onClose()
-  }, [isMatches, onClose])
-
   return <Box className={styles.overlay} onClick={onClose} />
 }
 
