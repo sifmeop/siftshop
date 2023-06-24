@@ -8,7 +8,7 @@ interface Props {
 const Meta = ({ title, description }: Props) => {
   return (
     <Head>
-      <title>{title} | SIFTSHOP</title>
+      <title>{title + ' | SIFTSHOP'}</title>
       <meta name='description' content={description} />
     </Head>
   )
