@@ -5,7 +5,7 @@ import { type CheckoutValues } from '@/types/checkout.interface'
 import Button from '@/ui/Button/Button'
 import { delivery } from '@/utils/constants'
 import { generateOrderId } from '@/utils/generateOrderId'
-import { Flex } from '@chakra-ui/react'
+import { Flex, useToast } from '@chakra-ui/react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useSession } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
@@ -21,6 +21,7 @@ import { schema } from './schemaYup'
 
 const Checkout = () => {
   const { data: session } = useSession()
+  const toast = useToast()
 
   const {
     register,
@@ -41,7 +42,7 @@ const Checkout = () => {
     resolver: yupResolver(schema)
   })
 
-  const { cart, total } = useCartStore((state) => state)
+  const { cart, total, clearCart } = useCartStore((state) => state)
 
   const billingWatch = watch('billing')
 
@@ -49,31 +50,42 @@ const Checkout = () => {
 
   const onSubmit = handleSubmit(async (data: CheckoutValues): Promise<void> => {
     console.log(data)
-    await handleCreateOrder({
-      userId: session?.user.id as string,
-      data: new Date(),
-      order_number: generateOrderId(),
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      products: cart.map((item) => ({
-        productId: item.product.id,
-        name: item.product.name,
-        image: item.product.image[0],
-        price: item.product.price,
-        count: item.count,
-        total: item.count * item.product.price
-      })),
-      total: total,
-      address: `${data.country}, ${data.city}, ${data.address}, ${data.zipCode}`,
-      delivery: data.billing,
-      delivery_count:
-        billingWatch === 'novaposhta'
-          ? delivery.novaposhta
-          : billingWatch === 'ukrposhta'
-          ? delivery.ukrposhta
-          : 0
+
+    if (session?.user) {
+      await handleCreateOrder({
+        userId: session.user.id,
+        data: new Date(),
+        order_number: generateOrderId(),
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        products: cart.map((item) => ({
+          productId: item.product.id,
+          name: item.product.name,
+          image: item.product.image[0],
+          price: item.product.price,
+          count: item.count,
+          total: item.count * item.product.price
+        })),
+        total: total,
+        address: `${data.country}, ${data.city}, ${data.address}, ${data.zipCode}`,
+        delivery: data.billing,
+        delivery_count:
+          billingWatch === 'novaposhta'
+            ? delivery.novaposhta
+            : billingWatch === 'ukrposhta'
+            ? delivery.ukrposhta
+            : 0
+      })
+    }
+    toast({
+      title: 'Order successfully created',
+      status: 'success',
+      duration: 2500,
+      isClosable: true,
+      position: 'top'
     })
     reset()
+    clearCart()
   })
 
   return (

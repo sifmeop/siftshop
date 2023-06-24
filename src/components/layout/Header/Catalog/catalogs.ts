@@ -1,18 +1,28 @@
 import { type Catalog } from '@/types/catalog.interface'
+import { BsGoogle, BsLaptop } from 'react-icons/bs'
+import { FiHeadphones, FiSmartphone } from 'react-icons/fi'
+import {
+  SiApple,
+  SiAsus,
+  SiDell,
+  SiJbl,
+  SiSony,
+  SiXiaomi
+} from 'react-icons/si'
 
-const APPLE_URL_ICON = '/brand/apple.png'
-const XIAOMI_URL_ICON = '/brand/xiaomi.png'
-const GOOGLE_URL_ICON = '/brand/google.png'
-const SONY_URL_ICON = '/brand/sony.png'
-const JBL_URL_ICON = '/brand/jbl.png'
-const ASUS_URL_ICON = '/brand/asus.png'
-const DELL_URL_ICON = '/brand/dell.png'
+const APPLE_URL_ICON = SiApple
+const XIAOMI_URL_ICON = SiXiaomi
+const GOOGLE_URL_ICON = BsGoogle
+const SONY_URL_ICON = SiSony
+const JBL_URL_ICON = SiJbl
+const ASUS_URL_ICON = SiAsus
+const DELL_URL_ICON = SiDell
 
 export const catalogs: Catalog[] = [
   {
     id: 1,
     name: 'Phones',
-    icon: '/catalog/phones.svg',
+    icon: FiSmartphone,
     href: '/catalog/phones',
     brands: [
       {
@@ -38,7 +48,7 @@ export const catalogs: Catalog[] = [
   {
     id: 2,
     name: 'Headphones',
-    icon: '/catalog/headphones.svg',
+    icon: FiHeadphones,
     href: '/catalog/headphones',
     brands: [
       {
@@ -64,7 +74,7 @@ export const catalogs: Catalog[] = [
   {
     id: 3,
     name: 'Laptops',
-    icon: '/catalog/laptops.svg',
+    icon: BsLaptop,
     href: '/catalog/laptops',
     brands: [
       {

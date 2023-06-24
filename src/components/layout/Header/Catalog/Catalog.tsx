@@ -1,87 +1,64 @@
-import {
-  Button,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList
-} from '@chakra-ui/react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Fragment } from 'react'
+import { Box, Button, useDisclosure } from '@chakra-ui/react'
 import { MdClose, MdOutlineDashboard } from 'react-icons/md'
-import { catalogs } from './catalogs'
+import { useMediaQuery } from 'usehooks-ts'
+import CatalogDesktop from './CatalogDesktop/CatalogDesktop'
+import CatalogMobile from './CatalogMobile/CatalogMobile'
 
 interface Props {
+  isOpen: boolean
   onCloseNav: () => void
+  onToggle: () => void
 }
 
-const Catalog = ({ onCloseNav }: Props) => {
+const Catalog = ({ isOpen, onCloseNav, onToggle }: Props) => {
+  const isMatch = useMediaQuery('(max-width: 1024px)')
+  const {
+    isOpen: isOpenCatalog,
+    onClose: onCloseCatalog,
+    onToggle: onToggleCatalog
+  } = useDisclosure()
+
   return (
-    <Menu>
-      {({ isOpen }) => (
-        <>
-          <MenuButton
-            h='auto'
-            bg='whiteAlpha.400'
-            color='white'
-            isActive={isOpen}
-            _hover={{ bg: 'whiteAlpha.500' }}
-            _active={{ bg: 'whiteAlpha.500' }}
-            as={Button}
-            leftIcon={
-              isOpen ? (
+    <>
+      <Box h='auto' pos='relative'>
+        <Button
+          h='100%'
+          bg='whiteAlpha.400'
+          color='white'
+          _hover={{ bg: 'whiteAlpha.500' }}
+          _active={{ bg: 'whiteAlpha.500' }}
+          leftIcon={
+            isMatch ? (
+              isOpenCatalog ? (
                 <MdClose size='2rem' />
               ) : (
                 <MdOutlineDashboard size='2rem' />
               )
-            }>
-            Catalog
-          </MenuButton>
-          <MenuList onClick={onCloseNav}>
-            <MenuItem as={Link} href='/catalog' fontWeight='semibold'>
-              All products
-            </MenuItem>
-            <MenuDivider />
-            {catalogs.map((catalog, index) => (
-              <Fragment key={catalog.id}>
-                <MenuItem
-                  as={Link}
-                  href={catalog.href}
-                  fontWeight='medium'
-                  gap={2}>
-                  <Image
-                    width={29}
-                    height={29}
-                    src={catalog.icon}
-                    alt={`Catalog icon ${catalog.name}`}
-                  />
-                  {catalog.name}
-                  <MenuDivider />
-                </MenuItem>
-                <MenuDivider />
-                {catalog.brands.map((brand) => (
-                  <MenuItem
-                    key={brand.name}
-                    as={Link}
-                    href={brand.href}
-                    gap={2}>
-                    <Image
-                      width={50}
-                      height={30}
-                      src={brand.icon}
-                      alt={`Brand icon ${brand.name}`}
-                    />
-                    {brand.name}
-                  </MenuItem>
-                ))}
-                {index + 1 !== catalogs.length && <MenuDivider />}
-              </Fragment>
-            ))}
-          </MenuList>
-        </>
-      )}
-    </Menu>
+            ) : isOpen ? (
+              <MdClose size='2rem' />
+            ) : (
+              <MdOutlineDashboard size='2rem' />
+            )
+          }
+          zIndex={1}
+          onClick={isMatch ? onToggleCatalog : onToggle}>
+          Catalog
+        </Button>
+        {isMatch ? (
+          <CatalogMobile
+            isOpen={isOpenCatalog}
+            onCloseNav={onCloseNav}
+            onCloseCatalog={onCloseCatalog}
+          />
+        ) : (
+          <>
+            {isOpen && (
+              <CatalogDesktop isOpen={isOpen} onCloseNav={onCloseNav} />
+            )}
+          </>
+        )}
+      </Box>
+    </>
   )
 }
 

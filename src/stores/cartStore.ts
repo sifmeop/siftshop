@@ -13,6 +13,7 @@ interface CartStore {
   removeFromCart: (id: string) => void
   incrementProduct: (id: string) => void
   decrementProduct: (id: string) => void
+  clearCart: () => void
 }
 
 export const useCartStore = create<CartStore>((set) => ({
@@ -76,5 +77,6 @@ export const useCartStore = create<CartStore>((set) => ({
       }
 
       return { cart: updatedCart, total: total - cartItem.product.price }
-    })
+    }),
+  clearCart: () => set({ cart: [], total: 0 })
 }))

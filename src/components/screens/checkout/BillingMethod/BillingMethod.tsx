@@ -41,7 +41,7 @@ const BillingMethod = ({ control }: Props) => {
                 <Image
                   width={100}
                   height={50}
-                  src='/brand/novaposhta.png'
+                  src='/icons/novaposhta.png'
                   alt='Nova poshta'
                 />
               </HStack>
@@ -53,7 +53,7 @@ const BillingMethod = ({ control }: Props) => {
                 <Image
                   width={100}
                   height={50}
-                  src='/brand/ukrposhta.png'
+                  src='/icons/ukrposhta.png'
                   alt='Urkposhta'
                 />
               </Flex>
