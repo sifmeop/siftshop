@@ -1,0 +1,10 @@
+.nav {
+  @apply top-[5.1594rem] flex-1 items-stretch gap-8 transition-all duration-300;
+
+  @media (max-width: 1024px) {
+    @apply absolute left-0 w-full -translate-x-full flex-col items-center border-t border-t-white/50 bg-black p-4 opacity-0;
+    &Mobile {
+      @apply translate-x-0 opacity-100;
+    }
+  }
+}

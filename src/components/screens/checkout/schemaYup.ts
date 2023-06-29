@@ -1,5 +1,4 @@
 import * as yup from 'yup'
-import 'yup-phone'
 
 export const schema = yup.object().shape({
   firstName: yup

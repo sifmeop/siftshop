@@ -13,11 +13,11 @@ import {
   Grid,
   GridItem,
   VStack,
-  useDisclosure
+  useDisclosure,
+  useMediaQuery
 } from '@chakra-ui/react'
 import { useMemo } from 'react'
 import { FiFilter } from 'react-icons/fi'
-import { useMediaQuery } from 'usehooks-ts'
 import ApplyButton from './ApplyButton/ApplyButton'
 import styles from './ProductFilter.module.scss'
 import ResetButton from './ResetButton/ResetButton'
@@ -32,7 +32,7 @@ interface Props {
 }
 
 const ProductFilter = ({ products, children, setFilterProducts }: Props) => {
-  const isMatches = useMediaQuery('(max-width: 768px)')
+  const [isMatches] = useMediaQuery('(max-width: 768px)')
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 

@@ -6,7 +6,7 @@
   }
 
   &Top {
-    gap: 1rem;
+    @apply items-center gap-4;
   }
 
   @media (max-width: 768px) {

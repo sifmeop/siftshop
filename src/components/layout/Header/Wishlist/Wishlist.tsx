@@ -1,13 +1,12 @@
+import { useCatalogStore } from '@/stores/catalogStore'
 import { useWishlistStore } from '@/stores/wishlistStore'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { LuHeart } from 'react-icons/lu'
 
-interface Props {
-  onCloseNav: () => void
-}
+const Wishlist = () => {
+  const onCloseCatalog = useCatalogStore((state) => state.onClose)
 
-const Wishlist = ({ onCloseNav }: Props) => {
   const { status } = useSession()
 
   const { wishlist } = useWishlistStore((state) => state)
@@ -28,7 +27,7 @@ const Wishlist = ({ onCloseNav }: Props) => {
     <Link
       href='/profile/wishlist'
       className='header__icon-button'
-      onClick={onCloseNav}>
+      onClick={onCloseCatalog}>
       <LuHeart size='2.2rem' />
       {wishlist.length > 0 && (
         <span className='icon__count'>{wishlist.length}</span>

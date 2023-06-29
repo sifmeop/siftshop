@@ -1,3 +1,4 @@
+import { useCatalogStore } from '@/stores/catalogStore'
 import {
   Button,
   Flex,
@@ -10,18 +11,16 @@ import { useRef } from 'react'
 import { BiSearch } from 'react-icons/bi'
 import styles from './Search.module.scss'
 
-interface Props {
-  onCloseNav: () => void
-}
+const Search = () => {
+  const onClose = useCatalogStore((state) => state.onClose)
 
-const Search = ({ onCloseNav }: Props) => {
   const router = useRouter()
 
   const valueRef = useRef<HTMLInputElement>(null)
 
   const handleSearch = () => {
     if (!valueRef.current?.value) return
-    onCloseNav()
+    onClose()
     router.push(`/search?value=${valueRef.current.value}`)
     valueRef.current.value = ''
   }

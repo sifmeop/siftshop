@@ -1,3 +1,4 @@
+import { useCatalogStore } from '@/stores/catalogStore'
 import { useComparingStore } from '@/stores/comparingStore'
 import {
   Divider,
@@ -16,11 +17,8 @@ import Link from 'next/link'
 import { AiOutlineDelete } from 'react-icons/ai'
 import { RiScalesLine } from 'react-icons/ri'
 
-interface Props {
-  onCloseNav: () => void
-}
-
-const Comparing = ({ onCloseNav }: Props) => {
+const Comparing = () => {
+  const onCloseCatalog = useCatalogStore((state) => state.onClose)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { categories, removeCategory } = useComparingStore((state) => state)
 
@@ -49,7 +47,7 @@ const Comparing = ({ onCloseNav }: Props) => {
                     className='hover:text-primary hover:underline'
                     onClick={() => {
                       onClose()
-                      onCloseNav()
+                      onCloseCatalog()
                     }}>
                     {(item.category[0] as string).toUpperCase() +
                       item.category.slice(1)}{' '}

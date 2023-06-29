@@ -17,11 +17,9 @@ const CartButton = ({ product, view }: Props) => {
 
   const cartItem = cart.find((item) => item.product.id === product.id)
 
-  const isInCart = !!cartItem
-
   return (
     <>
-      {isInCart ? (
+      {!!cartItem ? (
         <div
           className={clsx(styles.optionalChoice, {
             [styles.optionalChoiceList as string]: view === 'list'

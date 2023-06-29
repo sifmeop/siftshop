@@ -1,3 +1,4 @@
+import { useCatalogStore } from '@/stores/catalogStore'
 import { Flex } from '@chakra-ui/react'
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
@@ -9,6 +10,8 @@ interface Props {
 }
 
 const Main = ({ children }: Props) => {
+  const isOpen = useCatalogStore()
+
   const { pathname } = useRouter()
 
   if (pathname.includes('/profile')) {

@@ -1,17 +1,13 @@
-import { Box, Button, useDisclosure } from '@chakra-ui/react'
+import { useCatalogStore } from '@/stores/catalogStore'
+import { Box, Button, useDisclosure, useMediaQuery } from '@chakra-ui/react'
 import { MdClose, MdOutlineDashboard } from 'react-icons/md'
-import { useMediaQuery } from 'usehooks-ts'
 import CatalogDesktop from './CatalogDesktop/CatalogDesktop'
 import CatalogMobile from './CatalogMobile/CatalogMobile'
 
-interface Props {
-  isOpen: boolean
-  onCloseNav: () => void
-  onToggle: () => void
-}
+const Catalog = () => {
+  const { isOpen, onClose, onToggle } = useCatalogStore((state) => state)
 
-const Catalog = ({ isOpen, onCloseNav, onToggle }: Props) => {
-  const isMatch = useMediaQuery('(max-width: 1024px)')
+  const [isMatch] = useMediaQuery('(max-width: 1024px)')
 
   const {
     isOpen: isOpenCatalog,
@@ -48,11 +44,11 @@ const Catalog = ({ isOpen, onCloseNav, onToggle }: Props) => {
         {isMatch ? (
           <CatalogMobile
             isOpen={isOpenCatalog}
-            onCloseNav={onCloseNav}
+            onCloseNav={onClose}
             onCloseCatalog={onCloseCatalog}
           />
         ) : (
-          <>{isOpen && <CatalogDesktop onCloseNav={onCloseNav} />}</>
+          <>{isOpen && <CatalogDesktop onCloseNav={onClose} />}</>
         )}
       </Box>
     </>

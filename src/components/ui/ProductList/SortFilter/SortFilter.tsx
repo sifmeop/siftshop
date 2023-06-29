@@ -1,5 +1,6 @@
 import { type SortFilter as TypeValue } from '@/types/filter.interface'
 import { Select } from '@chakra-ui/react'
+import { memo } from 'react'
 
 interface Props {
   setSortFilter: (value: TypeValue) => void
@@ -12,6 +13,7 @@ const options = [
 ]
 
 const SortFilter = ({ setSortFilter }: Props) => {
+  console.log('render')
   return (
     <Select
       size='lg'
@@ -33,4 +35,4 @@ const SortFilter = ({ setSortFilter }: Props) => {
   )
 }
 
-export default SortFilter
+export default memo(SortFilter)

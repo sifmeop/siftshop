@@ -1,5 +1,6 @@
 import { useWishlistStore } from '@/stores/wishlistStore'
 import { type Product, type ProductDetail } from '@/types/product.interface'
+import { memo } from 'react'
 import { TbHeart, TbHeartOff } from 'react-icons/tb'
 
 interface Props {
@@ -7,6 +8,7 @@ interface Props {
 }
 
 const WishlistButton = ({ product }: Props) => {
+  console.log('render')
   const { wishlist, addToWishlist, removeFromWishlist } = useWishlistStore(
     (state) => state
   )
@@ -24,4 +26,4 @@ const WishlistButton = ({ product }: Props) => {
   )
 }
 
-export default WishlistButton
+export default memo(WishlistButton)

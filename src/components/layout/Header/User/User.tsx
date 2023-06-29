@@ -4,6 +4,7 @@ const DynamicHeaderIconLoader = dynamic(
     ssr: false
   }
 )
+import { useCatalogStore } from '@/stores/catalogStore'
 import {
   Button,
   Flex,
@@ -36,11 +37,8 @@ const checkStatus = (status: string) => {
   }
 }
 
-interface Props {
-  onCloseNav: () => void
-}
-
-const User = ({ onCloseNav }: Props) => {
+const User = () => {
+  const onCloseCatalog = useCatalogStore((state) => state.onClose)
   const { status } = useSession()
   const { onOpen, onClose, isOpen } = useDisclosure()
 
@@ -61,7 +59,7 @@ const User = ({ onCloseNav }: Props) => {
                 href='/profile'
                 onClick={() => {
                   onClose()
-                  onCloseNav()
+                  onCloseCatalog()
                 }}>
                 Profile
               </Button>

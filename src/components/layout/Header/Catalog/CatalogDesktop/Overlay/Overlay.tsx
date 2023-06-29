@@ -1,11 +1,12 @@
+import { useCatalogStore } from '@/stores/catalogStore'
 import { Box } from '@chakra-ui/react'
 import styles from './Overlay.module.scss'
 
-interface Props {
-  onClose: () => void
-}
+const Overlay = () => {
+  const { isOpen, onClose } = useCatalogStore((state) => state)
 
-const Overlay = ({ onClose }: Props) => {
+  if (!isOpen) return null
+
   return <Box className={styles.overlay} onClick={onClose} />
 }
 

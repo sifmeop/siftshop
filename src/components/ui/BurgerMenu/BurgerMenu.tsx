@@ -1,12 +1,10 @@
+import { useCatalogStore } from '@/stores/catalogStore'
 import clsx from 'clsx'
 import styles from './BurgerMenu.module.scss'
 
-interface Props {
-  isOpen: boolean
-  onToggle: () => void
-}
+const BurgerMenu = () => {
+  const { isOpen, onToggle } = useCatalogStore((state) => state)
 
-const BurgerMenu = ({ isOpen, onToggle }: Props) => {
   return (
     <button
       className={clsx(styles.menuIcon, {

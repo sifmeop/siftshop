@@ -1,4 +1,5 @@
 import { useCartStore } from '@/stores/cartStore'
+import { useCatalogStore } from '@/stores/catalogStore'
 import CartList from '@/ui/CartList/CartList'
 import { currencyFormat } from '@/utils/currencyFormat'
 import {
@@ -19,11 +20,8 @@ import {
 import Link from 'next/link'
 import { MdOutlineShoppingCart } from 'react-icons/md'
 
-interface Props {
-  onCloseNav: () => void
-}
-
-const Cart = ({ onCloseNav }: Props) => {
+const Cart = () => {
+  const onCloseCatalog = useCatalogStore((state) => state.onClose)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { cart, total } = useCartStore((state) => state)
 
@@ -73,7 +71,7 @@ const Cart = ({ onCloseNav }: Props) => {
                     variant='link'
                     onClick={() => {
                       onClose()
-                      onCloseNav()
+                      onCloseCatalog()
                     }}>
                     <Link href='/checkout'>To order</Link>
                   </Button>
